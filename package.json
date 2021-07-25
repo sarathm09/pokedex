@@ -1,0 +1,24 @@
+{
+    "name": "pokedex",
+    "version": "1.0.0",
+    "description": "A simple pokedex made using NextJS and powered by PokeAPI",
+    "repository": "https://github.com/sarathm09/pokedex.git",
+    "author": "Sarath S Menon <sarathm.09@gmail.com>",
+    "license": "GNU",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "next": "11.0.1",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "api-data": "github:PokeAPI/api-data"
+    },
+    "devDependencies": {
+        "eslint": "7.31.0",
+        "eslint-config-next": "11.0.1"
+    }
+}

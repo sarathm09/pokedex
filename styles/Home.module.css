@@ -1,0 +1,60 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.header h2 {
+    color: white;
+    font-weight: 500;
+}
+
+.pokemonList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    max-width: 90vw;
+    height: calc(80vh - 5rem);
+    max-height: 90vh;
+    overflow: scroll;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -1rem;
+}
+
+.pages {
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    max-width: 50rem;
+}
+
+.pages button {
+    height: 2rem;
+    width: 2rem;
+    color: #eee;
+    cursor: pointer;
+    border-radius: 50%;
+    margin: 0.2rem 0.2rem;
+    backdrop-filter: blur(15px);
+    background-color: rgba(202, 202, 202, 0.2);
+    box-shadow: rgba(86, 86, 90, 0.25) 0px 2px 3px -1px, rgba(121, 119, 119, 0.2) 0px 1px 2px -1px;
+}
+
+.pages button:active {
+    color: rgb(177, 167, 167);
+    backdrop-filter: blur(5px);
+    background-color: rgba(24, 24, 24, 0.397);
+    box-shadow: rgba(86, 86, 90, 0.15) 0px 2px 3px -2px, rgba(121, 119, 119, 0.2) 0px 1px 2px -2px;
+}
