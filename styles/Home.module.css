@@ -4,12 +4,12 @@
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
-    margin-bottom: 2rem;
 }
 
 .header h2 {
     color: white;
-    font-weight: 500;
+    font-weight: 300;
+    font-size: medium;
 }
 
 .pokemonList {
@@ -19,16 +19,15 @@
     align-items: flex-start;
     align-content: flex-start;
     max-width: 90vw;
-    height: calc(80vh - 5rem);
+    height: 80vh;
     max-height: 90vh;
     overflow: scroll;
     margin-left: auto;
     margin-right: auto;
-    margin-top: -1rem;
 }
 
 .pages {
-    height: 1.5rem;
+    height: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;

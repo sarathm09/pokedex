@@ -39,6 +39,10 @@ export default function Home({ pokemonList }) {
     )
 }
 
+/**
+ * Load the pokemon data from the poke-api api-data module.
+ * @returns pokemon list with id, name, image url and types
+ */
 export async function getStaticProps() {
     let pokemonList = pokemonData.results.map(pokemon => ({
         id: '' + pokemon.url.replace('/api/v2/pokemon/', '').replace('/', ''),
@@ -52,7 +56,10 @@ export async function getStaticProps() {
 
             return {
                 ...pokemon,
-                defaultImage: details.sprites?.other?.dream_world?.front_default || details.sprites?.front_default,
+                defaultImage:
+                    details.sprites?.other?.dream_world?.front_default ||
+                    details.sprites?.other?.['official-artwork']?.front_default ||
+                    details.sprites?.front_default,
                 types: details.types.map(type => type?.type?.name)
             }
         })

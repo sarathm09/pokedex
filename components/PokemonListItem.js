@@ -3,8 +3,13 @@ import styles from '../styles/PokemonListItem.module.css'
 import { getColorWithAlpha } from '../constants/pokemon-type-colors'
 
 const PokemonListItem = ({ id, pokemon }) => {
+    // Fallback image incase API didn't return any image
     const FALLBACK_IMAGE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png'
 
+    /**
+     * The API returns the name in small case (sometimes with hyphen).
+     * Change that to proper case.
+     */
     const getPokemonName = name => {
         if (name.includes('-')) {
             return name
@@ -22,9 +27,9 @@ const PokemonListItem = ({ id, pokemon }) => {
                     <div className={styles.pokemonImageBackground} style={{ backgroundColor: getColorWithAlpha(pokemon.types?.[0], '50') }}></div>
                     <Image
                         src={pokemon.defaultImage || FALLBACK_IMAGE}
-                        height='20'
-                        width='20'
-                        alt='something'
+                        height='300'
+                        width='300'
+                        alt={`Image for ${getPokemonName(pokemon.name)}`}
                         layout='responsive'
                         className={styles.pokemonImage}
                     />
