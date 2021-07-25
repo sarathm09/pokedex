@@ -68,6 +68,7 @@ export async function getStaticProps() {
     return {
         props: {
             pokemonList
-        }
+        },
+        revalidate: 60 * 60 * 24 * 15
     }
 }
