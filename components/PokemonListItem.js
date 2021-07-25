@@ -27,8 +27,8 @@ const PokemonListItem = ({ id, pokemon }) => {
                     <div className={styles.pokemonImageBackground} style={{ backgroundColor: getColorWithAlpha(pokemon.types?.[0], '50') }}></div>
                     <Image
                         src={pokemon.defaultImage || FALLBACK_IMAGE}
-                        height='300'
-                        width='300'
+                        height='100'
+                        width='100'
                         alt={`Image for ${getPokemonName(pokemon.name)}`}
                         layout='responsive'
                         className={styles.pokemonImage}
