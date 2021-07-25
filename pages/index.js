@@ -17,7 +17,7 @@ export default function Home({ pokemonList }) {
             <Head>
                 <title>Pokedex by sarathm09</title>
                 <meta name='description' content='Pokedex created using nextjs, pokeapi and a little bit of css' />
-                <link rel='icon' href='/favicon.svg' />
+                <link rel='icon' href='/favicon.ico' />
             </Head>
             <div className='container'>
                 <div className={styles.header}>
