@@ -1,28 +1,31 @@
-const colours = {
-    normal: '#A8A77A',
-    fire: '#EE8130',
-    water: '#6390F0',
-    electric: '#F7D02C',
-    grass: '#7AC74C',
-    ice: '#96D9D6',
-    fighting: '#C22E28',
-    poison: '#A33EA1',
-    ground: '#E2BF65',
-    flying: '#A98FF3',
-    psychic: '#F95587',
-    bug: '#A6B91A',
-    rock: '#B6A136',
-    ghost: '#735797',
-    dragon: '#6F35FC',
-    dark: '#705746',
-    steel: '#B7B7CE',
-    fairy: '#D685AD',
-    shadow: '#333333',
-    unknown: '#eeeeee'
+export const TYPE_COLORS = {
+    normal: '#A8A878',
+    fire: '#F08030',
+    water: '#6890F0',
+    electric: '#F8D030',
+    grass: '#78C850',
+    ice: '#98D8D8',
+    fighting: '#C03028',
+    poison: '#A040A0',
+    ground: '#E0C068',
+    flying: '#A890F0',
+    psychic: '#F85888',
+    bug: '#A8B820',
+    rock: '#B8A038',
+    ghost: '#705898',
+    dragon: '#7038F8',
+    dark: '#705848',
+    steel: '#B8B8D0',
+    fairy: '#EE99AC'
 }
 
-const getColor = type => colours[type] || '#777'
-const getColorWithAlpha = (type, alpha) => `${colours[type]}${alpha}` || `#777777${alpha}`
-
-export { getColor, getColorWithAlpha }
-export default getColor
+export function getColorWithAlpha(type, alpha) {
+    const color = TYPE_COLORS[type.toLowerCase()]
+    if (!color) return `rgba(168, 168, 120, ${parseInt(alpha, 16) / 255})`
+    
+    const r = parseInt(color.slice(1, 3), 16)
+    const g = parseInt(color.slice(3, 5), 16)
+    const b = parseInt(color.slice(5, 7), 16)
+    
+    return `rgba(${r}, ${g}, ${b}, ${parseInt(alpha, 16) / 255})`
+}
