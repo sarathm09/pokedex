@@ -1,0 +1,482 @@
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+/* Add a gradient background to the container */
+.container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+/* Single type background */
+.containerSingleType::before {
+    background: linear-gradient(
+        135deg,
+        var(--type-color) 0%,
+        var(--type-color-light) 100%
+    );
+}
+
+/* Dual type background */
+.containerDualType::before {
+    background: linear-gradient(
+        135deg,
+        var(--type-color-1) 0%,
+        var(--type-color-1) 15%,
+        color-mix(in srgb, var(--type-color-1) 75%, var(--type-color-2) 25%) 35%,
+        color-mix(in srgb, var(--type-color-1) 50%, var(--type-color-2) 50%) 50%,
+        color-mix(in srgb, var(--type-color-1) 25%, var(--type-color-2) 75%) 65%,
+        var(--type-color-2) 85%,
+        var(--type-color-2) 100%
+    );
+}
+
+.row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.row:first-child {
+    flex-wrap: nowrap;
+}
+
+.row:not(:first-child) {
+    flex-direction: column;
+}
+
+.row:not(:first-child) .card {
+    width: 100%;
+}
+
+/* Glassmorphic card styling */
+.card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    flex: 1;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.card h2 {
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Style text for better readability on glass background */
+.card p {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* Style the type badges for glass effect */
+.type {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    color: white;
+    text-transform: capitalize;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Style buttons for glass effect */
+.card button {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Style move and ability cards */
+.move, .ability {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.move:hover, .ability:hover {
+    transform: translateY(-2px);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .row:first-child {
+        flex-wrap: wrap;
+    }
+    
+    .row:first-child .card {
+        width: 100%;
+    }
+}
+
+/* Add subtle animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Optional: Add different delays for each card */
+.row:first-child .card:nth-child(1) { animation-delay: 0.1s; }
+.row:first-child .card:nth-child(2) { animation-delay: 0.2s; }
+.row:first-child .card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Update image card styles */
+.imageCard {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.imageContainer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 400px;
+    position: relative;
+}
+
+.imageContainer img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 400px !important;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    mix-blend-mode: multiply;
+}
+
+.imageContainer:hover img {
+    transform: scale(1.05);
+    filter: drop-shadow(0 12px 24px rgba(0,0,0,0.2));
+}
+
+.imageControls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+.variantButtons {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.variantButtons button,
+.imageToggle button {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.variantButtons button:hover,
+.imageToggle button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+.variantButtons button.active {
+    background: rgba(255, 255, 255, 0.4);
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+}
+
+/* Add shine effect on hover */
+@keyframes shine {
+    0% {
+        background-position: -100% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+.imageContainer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 70%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.imageContainer:hover::after {
+    opacity: 1;
+    animation: shine 1.5s infinite;
+}
+
+.moves {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+    padding: 0.5rem;
+}
+
+.move {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.move:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.move h3 {
+    font-size: 1rem;
+    margin: 0;
+    text-transform: capitalize;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.moveHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+}
+
+.moveType {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.moveStats {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.moveStat {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.moveEffect {
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.7);
+    line-height: 1.3;
+    margin-top: 0.25rem;
+}
+
+/* Update move stats icons */
+.moveStat svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+}
+
+/* Create a wrapper for the hover effect */
+.imageWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.imageWrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+/* Update floating animation to only affect non-transparent parts */
+@keyframes floatAnimation {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.imageContainer img {
+    animation: floatAnimation 3s ease-in-out infinite;
+}
+
+.statsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.statCircle {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    transition: transform 0.3s ease;
+}
+
+.statCircle:hover {
+    transform: scale(1.1);
+}
+
+.statCircle svg {
+    overflow: visible;
+}
+
+.statCircle circle {
+    transition: stroke-dashoffset 1s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+}
+
+/* Add this to your CSS */
+@keyframes progressAnimation {
+    0% {
+        stroke-dashoffset: 239;
+    }
+}
+
+.statValue {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: monospace;
+}
+
+.statLabel {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* Add animation on mount */
+.statCircle circle:nth-child(2) {
+    animation: progressAnimation 1.5s ease-out forwards;
+}
+
+/* Add hover effect */
+.statCircle:hover circle:nth-child(2) {
+    filter: brightness(1.2);
+}
+
+/* Add responsive design */
+@media (max-width: 768px) {
+    .statsContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .statsContainer {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.statsChart {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.statsChart canvas {
+    transition: transform 0.3s ease;
+}
+
+.statsChart:hover canvas {
+    transform: scale(1.02);
+}
+
+/* Add animation for the chart */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.statsChart {
+    animation: fadeInScale 0.5s ease-out forwards;
+}

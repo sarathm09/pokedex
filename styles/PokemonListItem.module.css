@@ -1,8 +1,9 @@
 .card {
     width: 15rem;
-    min-height: 5rem;
+    min-height: 7rem;
     margin: 0.5rem;
     margin-top: 4rem;
+    margin-bottom: 4rem;
     border-radius: 10px;
     padding: 0.5rem;
     cursor: pointer;
@@ -58,7 +59,7 @@
 
 
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     backdrop-filter: blur(7px);
 }
 
@@ -67,6 +68,7 @@
     justify-content: center;
     margin: 0.7rem;
     margin-top: -4.5rem;
+    padding-top: 6rem;
     text-align: center;
     flex-direction: column;
 }
