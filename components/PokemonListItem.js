@@ -16,6 +16,7 @@ const PokemonListItem = ({ id, pokemon, generation }) => {
      * Change that to proper case.
      */
     const getPokemonName = name => {
+        if (!name) return ""
         if (name.includes('-')) {
             return name
                 .split('-')
