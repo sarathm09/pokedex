@@ -27,9 +27,9 @@ export default function Home() {
     ]
 
     const filteredPokemons = pokemonList?.details?.filter(pokemon => {
-        const matchesSearch = searchTerm ? pokemon.name?.toLowerCase().includes(searchTerm?.toLowerCase()) : true
-        const matchesType = selectedTypes.length === 0 || 
-            pokemon.types.types.some(type => selectedTypes.includes(type))
+        const matchesSearch = !!searchTerm ? pokemon.name?.toLowerCase()?.includes(searchTerm?.toLowerCase()) : true
+        const matchesType = selectedTypes?.length === 0 || 
+            pokemon.types.types.some(type => selectedTypes?.includes(type))
         return matchesSearch && matchesType
     }) || []
 
@@ -56,9 +56,9 @@ export default function Home() {
 
     const handleTypeToggle = (type) => {
         setSelectedTypes(prev => 
-            prev.includes(type)
+            prev?.includes(type)
                 ? prev.filter(t => t !== type)
-                : [...prev, type]
+                : [...(prev || []), type]
         )
         setPage(1)
     }
