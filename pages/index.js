@@ -12,7 +12,7 @@ import { PokemonProvider, usePokemon } from '../context/PokemonContext'
 
 
 export default function Home() {
-    const { pokemons } = usePokemon()
+    const { pokemonList } = usePokemon()
     const [searchTerm, setSearchTerm] = useState('')
     const [selectedTypes, setSelectedTypes] = useState([])
     const [visiblePokemons, setVisiblePokemons] = useState([])
@@ -26,7 +26,7 @@ export default function Home() {
         'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'
     ]
 
-    const filteredPokemons = pokemons?.filter(pokemon => {
+    const filteredPokemons = pokemonList?.filter(pokemon => {
         const matchesSearch = searchTerm ? pokemon.name?.toLowerCase().includes(searchTerm?.toLowerCase()) : true
         const matchesType = selectedTypes.length === 0 || 
             pokemon.types.types.some(type => selectedTypes.includes(type))
