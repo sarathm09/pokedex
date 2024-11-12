@@ -20,7 +20,7 @@ export const TYPE_COLORS = {
 }
 
 export function getColorWithAlpha(type, alpha) {
-    const color = TYPE_COLORS[type.toLowerCase()]
+    const color = TYPE_COLORS[type?.toLowerCase()] ?? TYPE_COLORS.normal
     if (!color) return `rgba(168, 168, 120, ${parseInt(alpha, 16) / 255})`
     
     const r = parseInt(color.slice(1, 3), 16)
