@@ -26,7 +26,7 @@ export default function Home() {
         'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'
     ]
 
-    const filteredPokemons = pokemonList?.details?.filter(pokemon => {
+    const filteredPokemons = pokemonList?.details.reduce((a, c) => [...a, ...c], [])?.filter(pokemon => {
         const matchesSearch = !!searchTerm ? pokemon.name?.toLowerCase()?.includes(searchTerm?.toLowerCase()) : true
         const matchesType = selectedTypes?.length === 0 || 
             pokemon.types.types.some(type => selectedTypes?.includes(type))
