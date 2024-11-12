@@ -222,21 +222,17 @@ export default function PokemonDetails() {
     const router = useRouter()
     const { id } = router.query
     const { pokemonList, selectedPokemon } = usePokemon()
+    const [selectedVariant, setSelectedVariant] = useState('default')
+    const [showingBack, setShowingBack] = useState(false)
 
     if (!id || !pokemonList?.summary) return <div>Loading...</div>
 
     const pokemonSummary = pokemonList.summary.find(p => p.id === +id)
-
     if (!pokemonSummary) return <div>Pokemon not found</div>
-
+    
     const generation = pokemonSummary.generation
-    const pokemon = selectedPokemon || 
-                   (pokemonList.details?.[generation - 1]?.find(p => p.id === +id))
-
+    const pokemon = selectedPokemon || (pokemonList.details?.[generation - 1]?.find(p => p.id === +id))
     if (!pokemon) return <div>Loading pokemon details...</div>
-
-    const [selectedVariant, setSelectedVariant] = useState('default')
-    const [showingBack, setShowingBack] = useState(false)
 
     const getCurrentImage = () => {
         return showingBack ? pokemon.sprites[selectedVariant].back : pokemon.sprites[selectedVariant].front
